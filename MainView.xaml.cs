@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MedSearchApp.Views
 {
@@ -7,35 +8,43 @@ namespace MedSearchApp.Views
         public MainView()
         {
             InitializeComponent();
+
+            ShowHome(null, null);
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void ShowHome(object sender, RoutedEventArgs e)
         {
-            string symptom = SymptomTextBox.Text.ToLower();
-
-            if (string.IsNullOrWhiteSpace(symptom))
+            MainFrame.Content = new TextBlock
             {
-                MessageBox.Show("Будь ласка, введіть симптом.");
-                return;
-            }
-
-            if (symptom == "кашель")
-                ResultTextBox.Text = "Рекомендовано: сироп від кашлю";
-            else if (symptom == "температура")
-                ResultTextBox.Text = "Рекомендовано: парацетамол";
-            else
-                ResultTextBox.Text = "За даним симптомом інформацію не знайдено.";
+                Text = "Головний екран",
+                FontSize = 24,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
         }
 
-        private void Clear_Click(object sender, RoutedEventArgs e)
+        private void ShowResults(object sender, RoutedEventArgs e)
         {
-            SymptomTextBox.Clear();
-            ResultTextBox.Clear();
+            string symptom = "кашель";
+
+            MainFrame.Content = new TextBlock
+            {
+                Text = "Результати для: " + symptom,
+                FontSize = 20,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
         }
 
-        private void Info_Click(object sender, RoutedEventArgs e)
+        private void ShowInfo(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("МедПошук\nДовідкова система для пошуку ліків за симптомами.", "Інформація");
+            MainFrame.Content = new TextBlock
+            {
+                Text = "Інформація про програму",
+                FontSize = 20,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
         }
     }
 }
