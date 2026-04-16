@@ -45,6 +45,9 @@
                             CommandParameter="search"
                             x:Name="BtnSearch"
                             Content="🔍  Пошук ліків"/>
+                    <Button Content="📋 Препарати"
+                            Command="{Binding NavigateCommand}"
+                            CommandParameter="medicines"/>
                     <Button Style="{StaticResource NavButton}"
                             Command="{Binding NavigateCommand}"
                             CommandParameter="list"
