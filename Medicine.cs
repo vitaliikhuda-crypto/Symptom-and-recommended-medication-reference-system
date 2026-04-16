@@ -3,9 +3,6 @@ using System.Runtime.CompilerServices;
 
 namespace MedSearchWPF.Models;
 
-/// <summary>
-/// Модель лікарського засобу з INotifyPropertyChanged
-/// </summary>
 public class Medicine : INotifyPropertyChanged
 {
     private string _name        = string.Empty;
@@ -41,4 +38,3 @@ public class Medicine : INotifyPropertyChanged
 
     protected void OnPropertyChanged([CallerMemberName] string? name = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-}
